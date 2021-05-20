@@ -17,6 +17,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataAccess.Context;
+using Disney.API.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Disney.API
 {
@@ -29,9 +32,15 @@ namespace Disney.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            /*
+             * En caso de usar una base de datos (MSSQL), usar el siguiente contexto y modificar la cadena de conexión en el AppSettings
+             */
+            services.AddDbContext<DisneyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString"),  b => b.MigrationsAssembly("Disney.API")));
+
+            services.AddScoped<IPersonajes, SqlDisneyCharacters>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
