@@ -7,7 +7,7 @@ namespace DataAccess.Models
     public class Pelicula
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         [Required]
         [MaxLength(50, ErrorMessage = "El título de la película no puede superar los 50 caracteres.")] 
         public string Titulo { get; set; }
@@ -19,6 +19,6 @@ namespace DataAccess.Models
         [Required]
         public string Imagen { get; set; }
         [Required]
-        public List<Personaje> Personajes { get; set; }
+        public ICollection<Personaje> Personajes { get; set; }
     }
 }

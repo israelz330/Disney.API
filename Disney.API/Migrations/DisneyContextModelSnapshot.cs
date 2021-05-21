@@ -21,10 +21,9 @@ namespace Disney.API.Migrations
 
             modelBuilder.Entity("DataAccess.Models.Genero", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Imagen")
                         .IsRequired()
@@ -41,10 +40,9 @@ namespace Disney.API.Migrations
 
             modelBuilder.Entity("DataAccess.Models.Pelicula", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Calificacion")
                         .HasColumnType("int");
@@ -52,8 +50,8 @@ namespace Disney.API.Migrations
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("GeneroId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("GeneroId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Imagen")
                         .IsRequired()
@@ -73,10 +71,9 @@ namespace Disney.API.Migrations
 
             modelBuilder.Entity("DataAccess.Models.Personaje", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Edad")
                         .HasColumnType("int");
@@ -103,11 +100,11 @@ namespace Disney.API.Migrations
 
             modelBuilder.Entity("PeliculaPersonaje", b =>
                 {
-                    b.Property<int>("PeliculasId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PeliculasId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("PersonajesId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PersonajesId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("PeliculasId", "PersonajesId");
 
