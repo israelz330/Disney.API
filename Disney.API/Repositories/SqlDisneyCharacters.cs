@@ -16,9 +16,22 @@ namespace Disney.API.Repositories
         {
             _dbContext = dbContext;
         }
-        public async Task<List<Personaje>> GetCharactersAsync()
+        public async Task<List<Character>> GetCharactersAsync()
         {
-            return await _dbContext.Personajes.ToListAsync();
+            List<Character> listOfCharacters = new();
+
+            var query = from personajes in _dbContext.Personajes select personajes;
+
+            foreach (var personaje in query)
+            {
+                listOfCharacters.Add(new Character()
+                {
+                    Name = personaje.Nombre,
+                    Image = personaje.Imagen
+                });
+            }
+
+            return listOfCharacters;
         }
 
         public async Task<Personaje> GetCharacterById(Guid id)

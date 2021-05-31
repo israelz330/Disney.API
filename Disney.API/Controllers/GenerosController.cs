@@ -25,7 +25,7 @@ namespace Disney.API.Controllers
         /// </summary>
         /// <param name="genero"></param>
         /// <returns>Género</returns>
-        [Route("api/addGenre")]
+        [Route("addGenre")]
         [HttpPost]
         public async Task AddGenre(Genero genero)
         {

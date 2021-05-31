@@ -23,7 +23,7 @@ namespace Disney.API.Controllers
         }
 
         /// <summary>
-        /// Enlista todos los personajes.
+        /// Enlista todos los personajes (Nombre, Imagen).
         /// </summary>
         /// <returns>Nombre e imagen</returns>
         [Route("characters")]

@@ -8,7 +8,7 @@ namespace Disney.API.Repositories
 {
     public interface IPersonajes
     {
-        Task<List<Personaje>> GetCharactersAsync();
+        Task<List<Character>> GetCharactersAsync();
         Task<Personaje> GetCharacterById(Guid id);
         Personaje AddCharacter(string nombrePersonaje, int edad, string historia, string imagenPersonaje, string titulo, int calificacion, DateTime fechaCreacion, string imagenPelicula);
         Personaje EditCharacter(Personaje personaje);

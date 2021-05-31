@@ -18,5 +18,24 @@ namespace Disney.API.Controllers
             peliculas = _peliculas;
         }
 
+        /// <summary>
+        /// Enlista todas las películas de Disney
+        /// </summary>
+        /// <returns>Películas de Disney</returns>
+        [Route("GetMovies")]
+        [HttpGet]
+        public async Task<IActionResult> GetDisneyMovies()
+        {
+            if (await _peliculas.GetAllMovies() != null)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound("No movies in the database");
+            }
+        }
+
+
     }
 }
